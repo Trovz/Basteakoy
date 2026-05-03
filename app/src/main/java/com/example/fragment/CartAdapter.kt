@@ -29,7 +29,6 @@ class CartAdapter(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(h: VH, pos: Int) {
-        // Use named variable 'lineItem' to avoid shadowing the lambda 'it'
         val lineItem = items[pos]
         val ctx = h.itemView.context
         val imgRes = ctx.resources.getIdentifier(
@@ -67,7 +66,6 @@ class CartAdapter(
         notifyDataSetChanged()
     }
 
-    /** Called after checkout or clear — empties adapter list */
     fun clearAll() {
         items.clear()
         notifyDataSetChanged()

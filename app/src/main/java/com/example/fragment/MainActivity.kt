@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Default: Home
         replaceFragment(HomeFragment())
         bottomNav.selectedItemId = R.id.bottom_home
     }

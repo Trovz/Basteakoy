@@ -65,13 +65,11 @@ class basteakoy_db(context: MainActivity, factory: SQLiteDatabase.CursorFactory?
     }
     fun getOrder(): Cursor? {
         val db = this.readableDatabase
-        // Run a raw SQL query to get everything
         return db.rawQuery("SELECT * FROM users", null)
     }
 
     fun getCustomer(): Cursor? {
         val db = this.readableDatabase
-        // Run a raw SQL query to get everything
         return db.rawQuery("SELECT * FROM customers", null)
     }
 }

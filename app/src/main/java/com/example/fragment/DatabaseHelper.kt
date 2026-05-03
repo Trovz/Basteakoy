@@ -135,17 +135,17 @@ class DatabaseHelper(context: Context) :
         insertMenu(db, "Dragon Fruit","Exotic and colorful tropical fruit","Fruits", 70.0, 95.0, 120.0, 0.0, "dragonfrt")
         // Pizza
         insertMenu(db, "Pepperoni",   "Classic pepperoni with mozzarella", "Pizza",  99.0,149.0, 199.0, 0.0, "pepperoni")
-        insertMenu(db, "Margherita",  "Fresh tomato and basil pizza",      "Pizza",  89.0,139.0, 189.0, 0.0, "beefandmushroom")
-        insertMenu(db, "BBQ Chicken", "Smoky BBQ with grilled chicken",    "Pizza",  99.0,149.0, 199.0, 0.0, "supremespecial")
+        insertMenu(db, "Beef and Mushroom",  "Fresh tomato and basil pizza",      "Pizza",  89.0,139.0, 189.0, 0.0, "beefandmushroom")
+        insertMenu(db, "Supreme Special", "Smoky BBQ with grilled chicken",    "Pizza",  99.0,149.0, 199.0, 0.0, "supremespecial")
         insertMenu(db, "Hawaiian",    "Ham and pineapple tropical pizza",  "Pizza",  89.0,139.0, 189.0, 0.0, "hawaiian")
-        insertMenu(db, "Four Cheese", "Blend of four premium cheeses",     "Pizza", 109.0,159.0, 209.0, 0.0, "hamandcheese")
+        insertMenu(db, "Ham and Cheese", "Blend of four premium cheeses",     "Pizza", 109.0,159.0, 209.0, 0.0, "hamandcheese")
         // Soda
         insertMenu(db, "Coke",   "Ice cold Coca-Cola",             "Soda", 0.0, 0.0, 0.0, 35.0, "coke")
         insertMenu(db, "Royal",  "Refreshing orange soda",         "Soda", 0.0, 0.0, 0.0, 35.0, "royal")
         insertMenu(db, "Sprite", "Cool and crisp lemon-lime soda", "Soda", 0.0, 0.0, 0.0, 35.0, "sprite")
         // Snacks
         insertMenu(db, "Siomai", "Steamed pork dumplings", "Snacks", 0.0, 0.0, 0.0, 25.0, "siomai")
-        insertMenu(db, "Prize",  "Crunchy and tasty snack","Snacks", 0.0, 0.0, 0.0, 15.0, "prize")
+        insertMenu(db, "Fries",  "Crunchy and tasty snack","Snacks", 0.0, 0.0, 0.0, 15.0, "prize")
     }
 
     private fun insertEmployee(db: SQLiteDatabase, cashierId: String, password: String,
@@ -167,8 +167,6 @@ class DatabaseHelper(context: Context) :
         })
     }
 
-    //  Employee operations
-
     fun getEmployee(cashierId: String): Employee? {
         val db = readableDatabase
         val cur = db.query(TBL_EMP, null, "$EMP_CASHIER_ID=?", arrayOf(cashierId), null, null, null)
@@ -185,9 +183,6 @@ class DatabaseHelper(context: Context) :
             ).also { cur.close() }
         } else { cur.close(); null }
     }
-
-    //  Menu operations
-
     fun getAllMenuItems(activeOnly: Boolean = true): List<MenuItemData> {
         val db = readableDatabase
         val where = if (activeOnly) "$MENU_ACTIVE=1" else null
@@ -259,8 +254,6 @@ class DatabaseHelper(context: Context) :
         priceReg    = cur.getDouble(cur.getColumnIndexOrThrow(MENU_PRICE_REG)),
         imageName   = cur.getString(cur.getColumnIndexOrThrow(MENU_IMAGE)) ?: "ic_food"
     )
-
-    //  Transaction operations
 
     fun saveTransaction(txn: TransactionRecord): Long {
         val db = writableDatabase
@@ -398,7 +391,6 @@ class DatabaseHelper(context: Context) :
         return max + 1
     }
 
-    //  Register new employee (Sign Up)
     fun registerEmployee(
         cashierId: String, password: String, name: String,
         email: String, phone: String, shift: String
