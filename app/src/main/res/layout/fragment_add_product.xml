@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFBB00"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage Products"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add or delete menu items"
+            android:textSize="13sp"
+            android:textColor="#FFF3C0"
+            android:layout_marginTop="2dp"/>
+    </LinearLayout>
+
+    <!-- Tabs -->
+    <LinearLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tabAdd"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:text="➕ Add Product"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/chip_selected"
+            android:textColor="#FFFFFF"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/tabManage"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="🗑 Delete Product"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/chip_unselected"
+            android:textColor="#FFBB00"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <!-- ── ADD PRODUCT LAYOUT ─────────────────────────────────────────── -->
+    <ScrollView
+        android:id="@+id/addProductLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image Picker Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imgProductPreview"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/baseline_fastfood_24"
+                        android:scaleType="centerCrop"
+                        android:background="#F5F5F5"
+                        android:visibility="gone"
+                        android:layout_marginBottom="10dp"/>
+
+                    <Button
+                        android:id="@+id/btnPickImage"
+                        android:layout_width="200dp"
+                        android:layout_height="44dp"
+                        android:text="📷  Upload Photo"
+                        android:textSize="13sp"
+                        android:textColor="#1A1A1A"
+                        android:background="@drawable/btn_yellow"
+                        android:stateListAnimator="@null"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tap to choose from gallery (optional)"
+                        android:textSize="11sp"
+                        android:textColor="#AAAAAA"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Product Details Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Details"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#222222"
+                        android:layout_marginBottom="12dp"/>
+
+                    <!-- Product Name -->
+                    <TextView style="@style/LabelStyle" android:text="Product Name *"/>
+                    <EditText
+                        android:id="@+id/productName"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="e.g. Mango Shake"
+                        android:background="@drawable/field_border"
+                        android:paddingHorizontal="12dp"
+                        android:inputType="textCapWords"
+                        android:imeOptions="actionNext"/>
+
+                    <!-- Description -->
+                    <TextView style="@style/LabelStyle" android:text="Description *" android:layout_marginTop="12dp"/>
+                    <EditText
+                        android:id="@+id/productDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:hint="e.g. Fresh and sweet mango shake"
+                        android:background="@drawable/field_border"
+                        android:paddingHorizontal="12dp"
+                        android:paddingTop="10dp"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"/>
+
+                    <!-- Category -->
+                    <TextView style="@style/LabelStyle" android:text="Category *" android:layout_marginTop="12dp"/>
+                    <Spinner
+                        android:id="@+id/categorySpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/field_border"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Price Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price per Size"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#222222"
+                        android:layout_marginBottom="12dp"/>
+
+                    <!-- Sized prices (Fruits / Pizza) -->
+                    <LinearLayout
+                        android:id="@+id/sizePriceLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/LabelStyle" android:text="Small (S) Price ₱"/>
+                        <EditText android:id="@+id/priceSmall"
+                            android:layout_width="match_parent" android:layout_height="52dp"
+                            android:hint="0.00" android:background="@drawable/field_border"
+                            android:paddingHorizontal="12dp"
+                            android:inputType="numberDecimal" android:imeOptions="actionNext"/>
+
+                        <TextView style="@style/LabelStyle" android:text="Medium (M) Price ₱" android:layout_marginTop="12dp"/>
+                        <EditText android:id="@+id/priceMedium"
+                            android:layout_width="match_parent" android:layout_height="52dp"
+                            android:hint="0.00" android:background="@drawable/field_border"
+                            android:paddingHorizontal="12dp"
+                            android:inputType="numberDecimal" android:imeOptions="actionNext"/>
+
+                        <TextView style="@style/LabelStyle" android:text="Large (L) Price ₱" android:layout_marginTop="12dp"/>
+                        <EditText android:id="@+id/priceLarge"
+                            android:layout_width="match_parent" android:layout_height="52dp"
+                            android:hint="0.00" android:background="@drawable/field_border"
+                            android:paddingHorizontal="12dp"
+                            android:inputType="numberDecimal" android:imeOptions="actionDone"/>
+                    </LinearLayout>
+
+                    <!-- Regular price (Soda / Snacks) -->
+                    <LinearLayout
+                        android:id="@+id/regularPriceLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView style="@style/LabelStyle" android:text="Regular Price ₱"/>
+                        <EditText android:id="@+id/priceRegular"
+                            android:layout_width="match_parent" android:layout_height="52dp"
+                            android:hint="0.00" android:background="@drawable/field_border"
+                            android:paddingHorizontal="12dp"
+                            android:inputType="numberDecimal" android:imeOptions="actionDone"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="24dp">
+
+                <Button
+                    android:id="@+id/btnClear"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Clear"
+                    android:textColor="#555555"
+                    android:background="@drawable/field_border"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/btnAddProduct"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="Add Product"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A"
+                    android:background="@drawable/btn_yellow"
+                    android:stateListAnimator="@null"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ── MANAGE PRODUCTS (DELETE) LAYOUT ──────────────────────────── -->
+    <LinearLayout
+        android:id="@+id/manageProductLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvManageEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No products found."
+            android:textSize="15sp"
+            android:textColor="#AAAAAA"
+            android:gravity="center"
+            android:layout_marginTop="60dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/manageProductsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="8dp"
+            android:clipToPadding="false"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

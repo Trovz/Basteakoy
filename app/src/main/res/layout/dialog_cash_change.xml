@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Dialog Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#FFBB00"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💰 Cash Payment"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter amount received from customer"
+            android:textSize="12sp"
+            android:textColor="#FFF3C0"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Order Total -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F9F9F9"
+            android:padding="12dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Order Total:"
+                android:textSize="14sp"
+                android:textColor="#555555"/>
+            <TextView
+                android:id="@+id/dialogOrderTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₱0.00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#222222"/>
+        </LinearLayout>
+
+        <!-- Cash Received Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cash Received (₱)"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#444444"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCashReceived"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeColor="#FFBB00"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCashReceived"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#555555"
+                android:imeOptions="actionNext"
+                android:gravity="center_vertical"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Quick Amount Buttons -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quick Amount:"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <Button android:id="@+id/btn50"  style="@style/QuickAmtBtn" android:text="₱50"/>
+            <Button android:id="@+id/btn100" style="@style/QuickAmtBtn" android:text="₱100"/>
+            <Button android:id="@+id/btn200" style="@style/QuickAmtBtn" android:text="₱200"/>
+            <Button android:id="@+id/btn500" style="@style/QuickAmtBtn" android:text="₱500"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:weightSum="3">
+            <Button android:id="@+id/btn1000" style="@style/QuickAmtBtn" android:text="₱1000"/>
+            <Button android:id="@+id/btnExact" style="@style/QuickAmtBtn"
+                android:text="Exact"
+                android:textColor="#FFBB00"
+                android:backgroundTint="#FFF3C0"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Change Result -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#333333"/>
+            <TextView
+                android:id="@+id/tvChangeAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₱0.00"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#388E3C"/>
+        </LinearLayout>
+
+        <!-- Insufficient warning -->
+        <TextView
+            android:id="@+id/tvInsufficientWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠ Cash received is less than total!"
+            android:textSize="12sp"
+            android:textColor="#D32F2F"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"/>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnCancelPayment"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="Cancel"
+                android:textColor="#555555"
+                android:backgroundTint="@color/input_stroke_color"
+                android:stateListAnimator="@null"/>
+
+            <Button
+                android:id="@+id/btnConfirmPayment"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Confirm"
+                android:textColor="#1A1A1A"
+                android:textStyle="bold"
+                android:backgroundTint="@color/yellow"
+                android:stateListAnimator="@null"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

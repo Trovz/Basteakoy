@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Fragment" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="Theme.Fragment" parent="Base.Theme.Fragment" />
+
+    <style name="Theme.Fragment.Splash" parent="Theme.Fragment">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/yellow</item>
+    </style>
+
+    <!-- Label style used in sign up form -->
+    <style name="LabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#555555</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+
+    <!-- Quick amount button style for cash change dialog -->
+    <style name="QuickAmtBtn" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">38dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">3dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#555555</item>
+        <item name="strokeColor">#DDDDDD</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+</resources>
