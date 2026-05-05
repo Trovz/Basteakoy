@@ -64,12 +64,6 @@ class LoginActivity : AppCompatActivity() {
             if (validate()) performLogin(isAdmin = false)
         }
 
-        // Navigate to Admin Login screen
-        btnAdmin.setOnClickListener {
-            startActivity(Intent(this, AdminLoginActivity::class.java))
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        }
-
         // Navigate to Sign Up screen
         val tvSignUp = findViewById<TextView>(R.id.tvSignUp)
         tvSignUp?.setOnClickListener {
