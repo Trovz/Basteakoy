@@ -113,7 +113,7 @@ The app uses a local SQLite database (`basteakoy.db`) with four tables:
 
 On first install the database is seeded with:
 - **Cashier:** ID `1001`, password `basteakoy123`
-- **Admin:** ID `9999`, password `admin@basteakoy`
+- **Admin:** ID `??????`, password `????????`
 - 15 menu items across Fruits, Pizza, Soda, and Snacks categories
 
 ---
@@ -144,7 +144,7 @@ On first install the database is seeded with:
 | Role | Cashier ID | Password |
 |---|---|---|
 | Cashier | `1001` | `basteakoy123` |
-| Admin | `9999` | `admin@basteakoy` |
+| Admin | `????` | `???????` |
 
 ---
 
